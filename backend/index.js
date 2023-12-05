@@ -7,7 +7,10 @@ const app = express();
 const port = 3001; // should be different from frontend
 
 var corsOptions = {
-  origin: "http://localhost:3000",
+  origin:
+    process.env.NODE_ENV === "production"
+      ? "http://158.37.63.194/"
+      : "http://localhost:3000",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
@@ -26,11 +29,11 @@ app.use(express.json());
 // app.use(express.urlencoded({ extended: true })); // TODO: check it out
 app.use(cors(corsOptions));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Hello World to the browser!");
 });
 
-app.post("/", (req, res) => {
+app.post("/api", (req, res) => {
   // TODO: check body size, once HTTPS is set up it will be redundant
   console.log(req.body);
   console.log(req.query);
