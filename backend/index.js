@@ -26,6 +26,7 @@ app.use(limiter);
 
 app.use(helmet());
 app.use(express.json());
+app.set("trust proxy", "loopback"); // specify a single subnet
 // app.use(express.urlencoded({ extended: true })); // TODO: check it out
 app.use(cors(corsOptions));
 
