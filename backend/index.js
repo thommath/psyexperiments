@@ -30,11 +30,11 @@ app.set("trust proxy", "loopback"); // specify a single subnet
 // app.use(express.urlencoded({ extended: true })); // TODO: check it out
 app.use(cors(corsOptions));
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello World to the browser!");
 });
 
-app.post("/api", (req, res) => {
+app.post("/", (req, res) => {
   // TODO: check body size, once HTTPS is set up it will be redundant
   console.log(req.body);
   console.log(req.query);
