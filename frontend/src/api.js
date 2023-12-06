@@ -5,7 +5,7 @@ const sendData = (data) => {
     location.href.split("?").length > 1 ? location.href.split("?").at(-1) : "";
   console.log(params);
   const host = location.host.startsWith("localhost")
-    ? "http://localhost:3001/api?"
+    ? "http://localhost:3001/?" // Why no /api? there?
     : "/api?";
   //fetch("http://localhost:3001/?" + params, {
   fetch(host + params, {
