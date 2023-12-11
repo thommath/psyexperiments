@@ -35,21 +35,18 @@ app.set("trust proxy", "loopback"); // specify a single subnet
 // app.use(express.urlencoded({ extended: true })); // TODO: check it out
 app.use(cors(corsOptions));
 
-console.log("Hello");
-
 app.get("/", (req, res) => {
   res.send("Hello World to the browser!");
 });
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
   // TODO: check body size, once HTTPS is set up it will be redundant
   console.log(req.body);
   console.log(req.query);
-  res.send("POST gotten");
-  (async () => {
-    const result = await uploadDataToOSF(req.body);
-    console.log(result ? "Uploaded to OSF" : "Failed to upload to OSF");
-  })();
+  const result = await uploadDataToOSF(req.body);
+  const message = result ? "Uploaded to OSF" : "Failed to upload to OSF";
+  console.log(message);
+  res.send(message);
 });
 
 app.listen(port, () => {
