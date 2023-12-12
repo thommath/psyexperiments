@@ -43,6 +43,14 @@ app.post("/", async (req, res) => {
   // TODO: check body size, once HTTPS is set up it will be redundant
   console.log(req.body);
   console.log(req.query);
+  // TODO: should check how long the values are and if they are valid
+  req.body["PID"] =
+    Object.keys(req.query).length >= 2
+      ? Object.values(req.query)[0]
+      : String(Date.now());
+  req.body["STUDY_ID"] =
+    Object.keys(req.query).length >= 2 ? Object.values(req.query)[1] : "1234";
+
   const result = await uploadDataToOSF(req.body);
   const message = result ? "Uploaded to OSF" : "Failed to upload to OSF";
   console.log(message);
