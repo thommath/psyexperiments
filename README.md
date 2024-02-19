@@ -13,6 +13,11 @@ This is a private repository for running experiments on the web using jspsych li
 
 ## Website code
 
+Prerequisites:
+
+- Node v18.18.2 https://nodejs.org/en/blog/release/v18.18.2
+- Python
+
 ### Backend
 
 It handles the server-side logic and API endpoints. Currently, listens to requests on the server from frontend and once experiment raw data is sent, it uploads the JSON to OSF. Which OSF project it uploads to depends on the values defined in .env:
@@ -24,17 +29,17 @@ OSF_API_TOKEN = [insert long token]
 OSF_RESOURCE_ID = [insert some id]
 ```
 
-Those are secret variables, therefore not added to the repo.
-
+Get token from https://osf.io/settings/tokens, resource id can be found in the address when you go to the project: https://osf.io/some_id_here/ instead of `some_id_here`. Those are secret variables, therefore not added to the repo.
+First time running project, remember to install packages by running `npm install`.
 Run `npm run start` to start running the backend, when testing.
 
 ### Frontend
 
-The frontend is built using [jspsych builder](https://github.com/bjoluc/jspsych-builder). More information on how to use it, see its [Readme]()
+The frontend is built using [jspsych builder](https://github.com/bjoluc/jspsych-builder).
 
-Uses a new [video-several-keyboard-responses](https://github.com/jspsych/jspsych-contrib/pull/83) plugin for the video experiment.
+Uses a new [video-several-keyboard-responses](https://github.com/jspsych/jspsych-contrib/tree/main/packages/plugin-video-several-keyboard-responses) plugin for the video experiment.
 
-Run `npm run start experiment` to start running the specific js file in this case `experiment.js`, when testing.
+Run `npm run start experiment` to start running the specific js file in this case `experiment.js`, when testing. Remember to run `npm build` the first time setting up the project.
 
 ## Data parsing (python)
 
