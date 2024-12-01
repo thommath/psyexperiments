@@ -1,0 +1,39 @@
+{
+    "name": "JSP Dev Environment",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+    "features": {
+      "ghcr.io/devcontainers/features/git:1": {},
+      "python": "3.12" 
+    },
+    "runArgs": ["--add-host=host.docker.internal:host-gateway"],
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python",
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode"
+        ]
+      }
+    },
+    "postCreateCommand": "npm install --prefix backend && npm install --prefix frontend && pip install -r pythonDataParsing/requirements.txt",
+    "remoteEnv": {
+      "OSF_API_TOKEN": "${localEnv:OSF_API_TOKEN}",
+      "OSF_RESOURCE_ID": "${localEnv:OSF_RESOURCE_ID}",
+      "NODE_ENV": "development" 
+    },
+    "portsAttributes": {
+      "3001": {
+        "label": "Backend Server",
+        "onAutoForward": "notify"
+      },
+      "3000": {
+        "label": "Frontend Server",
+        "onAutoForward": "notify"
+      }
+    },
+    "forwardPorts": [3001, 3000],
+    "mounts": [
+      "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ]
+  }
+  
