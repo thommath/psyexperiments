@@ -1,6 +1,6 @@
 # JSP
 
-This is a private repository for running experiments on the web using jspsych library.
+This is a repository for running experiments on the web using jspsych library. Currently running at http://158.37.63.194/
 
 ## Table of Contents
 
