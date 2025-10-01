@@ -53,7 +53,7 @@ services:
   watchtower:
     image: containrrr/watchtower:1.7.1
     container_name: watchtower
-    command: --interval 300 --label-enable --include-stopped --include-restarting --rolling-restart
+    command: --interval 60 --label-enable --include-stopped --include-restarting --rolling-restart
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
