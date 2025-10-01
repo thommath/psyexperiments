@@ -109,19 +109,19 @@ Create a `.env` file at the repository root. These variables configure both loca
 Example skeleton:
 
 ```env
-# Backend (OSF)
+# Backend (OSF integration)
 OSF_API_TOKEN=
 OSF_RESOURCE_ID=
-HOST_URL=example.com
 
-# Proxy / TLS
+# Proxy / Certbot
 SERVER_NAME=example.com
 EMAIL=admin@example.com
 
 # Upstreams for proxy
-FRONTEND_HOST=frontend
+# Should not require change
+FRONTEND_HOST=localhost
 FRONTEND_PORT=8080
-BACKEND_HOST=backend
+BACKEND_HOST=localhost
 BACKEND_PORT=3001
 ```
 
