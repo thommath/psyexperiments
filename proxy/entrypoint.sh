@@ -30,10 +30,3 @@ certbot --nginx -n --agree-tos --email "$EMAIL" -d "$SERVER_NAME" --redirect || 
 # Restart nginx to load certs
 nginx -s reload || true
 
-# Setup cron-like certbot renew loop (12h)
-while true; do
-  certbot renew --nginx -q || true
-  sleep 12h
-done &
-
-
