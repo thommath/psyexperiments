@@ -16,7 +16,7 @@ RUN npm run build
 FROM nginx:1.27-alpine AS runtime
 
 # Copy built assets to Nginx html directory
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/.jspsych-builder /usr/share/nginx/html
 
 # Expose default HTTP port
 EXPOSE 80
