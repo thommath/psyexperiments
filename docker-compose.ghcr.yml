@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   frontend:
-    image: ghcr.io/<owner>/psyexperiments-frontend:latest
+    image: ghcr.io/marianylund/psyexperiments-frontend:latest
     container_name: psyexperiments-frontend
     restart: unless-stopped
     pull_policy: always
@@ -13,7 +13,7 @@ services:
       - "8080:8080"
 
   backend:
-    image: ghcr.io/<owner>/psyexperiments-backend:latest
+    image: ghcr.io/marianylund/psyexperiments-backend:latest
     container_name: psyexperiments-backend
     environment:
       - OSF_API_TOKEN=${OSF_API_TOKEN}
@@ -28,7 +28,7 @@ services:
       - "3001:3001"
 
   proxy:
-    image: ghcr.io/<owner>/psyexperiments-proxy:latest
+    image: ghcr.io/marianylund/psyexperiments-proxy:latest
     container_name: psyexperiments-proxy
     network_mode: host
     environment:
