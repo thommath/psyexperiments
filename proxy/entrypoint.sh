@@ -32,8 +32,8 @@ nginx -s reload || true
 
 # Setup cron-like certbot renew loop (12h)
 while true; do
-  sleep 12h
   certbot renew --nginx -q || true
+  sleep 12h
 done &
 
 
