@@ -8,6 +8,9 @@ services:
     pull_policy: always
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+    network_mode: host
+    ports:
+      - "8080:8080"
 
   backend:
     image: ghcr.io/<owner>/psyexperiments-backend:latest
@@ -20,13 +23,14 @@ services:
     pull_policy: always
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+    network_mode: host
+    ports:
+      - "3001:3001"
 
   proxy:
     image: ghcr.io/<owner>/psyexperiments-proxy:latest
     container_name: psyexperiments-proxy
-    ports:
-      - "80:80"
-      - "443:443"
+    network_mode: host
     environment:
       - SERVER_NAME=${SERVER_NAME}
       - EMAIL=${EMAIL}
