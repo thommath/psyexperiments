@@ -9,7 +9,7 @@ CONF=/etc/nginx/nginx.conf
 
 # Default upstreams
 FRONTEND_HOST="${FRONTEND_HOST:-frontend}"
-FRONTEND_PORT="${FRONTEND_PORT:-80}"
+FRONTEND_PORT="${FRONTEND_PORT:-8080}"
 BACKEND_HOST="${BACKEND_HOST:-backend}"
 BACKEND_PORT="${BACKEND_PORT:-3001}"
 
@@ -36,8 +36,11 @@ while true; do
   sleep 12h
 done &
 
-# Keep nginx in foreground
-nginx -g 'daemon off;'
+# Stop background nginx before starting foreground instance
+nginx -s quit || true
+
+# Keep nginx in foreground (PID 1)
+exec nginx -g 'daemon off;'
 
 
 
