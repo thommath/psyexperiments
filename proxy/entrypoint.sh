@@ -30,3 +30,4 @@ certbot --nginx -n --agree-tos --email "$EMAIL" -d "$SERVER_NAME" --redirect || 
 # Restart nginx to load certs
 nginx -s reload || true
 
+sleep infinity
