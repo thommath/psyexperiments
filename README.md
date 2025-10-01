@@ -120,7 +120,7 @@ EMAIL=admin@example.com
 
 # Upstreams for proxy
 FRONTEND_HOST=frontend
-FRONTEND_PORT=80
+FRONTEND_PORT=8080
 BACKEND_HOST=backend
 BACKEND_PORT=3001
 ```

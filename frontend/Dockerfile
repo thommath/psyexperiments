@@ -19,7 +19,7 @@ FROM nginx:1.27-alpine AS runtime
 COPY --from=builder /app/.jspsych-builder /usr/share/nginx/html
 
 # Expose default HTTP port
-EXPOSE 80
+EXPOSE 8080
 
 # Use the default Nginx start command
 CMD ["nginx", "-g", "daemon off;"]
