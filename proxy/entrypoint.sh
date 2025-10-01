@@ -32,15 +32,8 @@ nginx -s reload || true
 
 # Setup cron-like certbot renew loop (12h)
 while true; do
-  certbot renew --nginx -q || true
   sleep 12h
+  certbot renew --nginx -q || true
 done &
-
-# Stop background nginx before starting foreground instance
-nginx -s quit || true
-
-# Keep nginx in foreground (PID 1)
-exec nginx -g 'daemon off;'
-
 
 
